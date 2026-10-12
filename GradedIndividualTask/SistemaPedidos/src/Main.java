@@ -4,7 +4,6 @@ import java.util.List;
 
 public class SistemaPedidos {
 
-    // --- CLASSE PRODUTO ---
     public static class Produto {
         private int codigo;
         private String nome;
@@ -61,7 +60,6 @@ public class SistemaPedidos {
         }
     }
 
-    // --- CLASSE ITEM PEDIDO ---
     public static class ItemPedido {
         private Produto produto;
         private int quantidade;
@@ -90,7 +88,6 @@ public class SistemaPedidos {
         }
     }
 
-    // --- CLASSE PEDIDO ---
     public static class Pedido {
         private int id;
         private LocalDateTime dataHora;
@@ -165,28 +162,22 @@ public class SistemaPedidos {
         }
     }
 
-    // --- MÉTODO MAIN PARA TESTES ---
     public static void main(String[] args) {
         System.out.println("--- Testando o Sistema de Pedidos ---");
 
-        // Criando produtos
         Produto p1 = new Produto(1, "Notebook", "Eletronicos", 3500.00, 10);
         Produto p2 = new Produto(2, "Mouse Sem Fio", "Eletronicos", 150.00, 20);
 
-        // Criando um pedido
         Pedido pedido = new Pedido(101);
 
-        // Adicionando itens
         pedido.adicionarItem(new ItemPedido(p1, 1));
         pedido.adicionarItem(new ItemPedido(p2, 2));
 
         System.out.println("Valor total do pedido: R$ " + pedido.calcularTotal());
 
-        // Finalizando o pedido
         pedido.finalizarPedido();
         System.out.println("Pedido finalizado com sucesso!");
 
-        // Verificando estoque atualizado
         System.out.println("Estoque restante de Notebook: " + p1.getQuantidadeEstoque() + " unidades.");
         System.out.println("Estoque restante de Mouse: " + p2.getQuantidadeEstoque() + " unidades.");
     }
